@@ -41223,6 +41223,10 @@ var _Filters = __webpack_require__(344);
 
 var _Filters2 = _interopRequireDefault(_Filters);
 
+var _Sorts = __webpack_require__(345);
+
+var _Sorts2 = _interopRequireDefault(_Sorts);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -41240,9 +41244,11 @@ var Navigation = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Navigation.__proto__ || Object.getPrototypeOf(Navigation)).call(this, props));
 
     _this.state = {
-      showFilters: false
+      showFilters: false,
+      showSorts: false
     };
     _this.toggleFilters = _this.toggleFilters.bind(_this);
+    _this.toggleSorts = _this.toggleSorts.bind(_this);
     return _this;
   }
 
@@ -41250,6 +41256,11 @@ var Navigation = function (_React$Component) {
     key: 'toggleFilters',
     value: function toggleFilters() {
       this.setState({ showFilters: !this.state.showFilters });
+    }
+  }, {
+    key: 'toggleSorts',
+    value: function toggleSorts() {
+      this.setState({ showSorts: !this.state.showSorts });
     }
   }, {
     key: 'render',
@@ -41279,11 +41290,25 @@ var Navigation = function (_React$Component) {
           _reactBootstrap.Nav,
           { pullRight: true },
           _react2.default.createElement(
-            _reactBootstrap.Button,
-            { onClick: this.toggleFilters },
-            'Filters'
+            _reactBootstrap.Nav,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.NavItem,
+              { onClick: this.toggleFilters },
+              'Filter'
+            ),
+            this.state.showFilters && _react2.default.createElement(_Filters2.default, null)
           ),
-          this.state.showFilters && _react2.default.createElement(_Filters2.default, null)
+          _react2.default.createElement(
+            _reactBootstrap.Nav,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.NavItem,
+              { onClick: this.toggleSorts },
+              'Sort'
+            ),
+            this.state.showSorts && _react2.default.createElement(_Sorts2.default, null)
+          )
         )
       );
     }
@@ -41372,6 +41397,85 @@ var Filters = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Filters;
+
+/***/ }),
+/* 345 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = __webpack_require__(196);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Sorts = function (_React$Component) {
+  _inherits(Sorts, _React$Component);
+
+  function Sorts() {
+    _classCallCheck(this, Sorts);
+
+    return _possibleConstructorReturn(this, (Sorts.__proto__ || Object.getPrototypeOf(Sorts)).apply(this, arguments));
+  }
+
+  _createClass(Sorts, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _reactBootstrap.Nav,
+        { pullRight: true },
+        _react2.default.createElement(
+          _reactBootstrap.NavDropdown,
+          { title: 'Primary', id: 'basic-nav-dropdown' },
+          _react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            null,
+            'Price'
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            null,
+            'School Rating'
+          )
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.NavDropdown,
+          { title: 'Secondary', id: 'basic-nav-dropdown' },
+          _react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            null,
+            'Price'
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.MenuItem,
+            null,
+            'School Rating'
+          )
+        )
+      );
+    }
+  }]);
+
+  return Sorts;
+}(_react2.default.Component);
+
+exports.default = Sorts;
 
 /***/ })
 /******/ ]);
