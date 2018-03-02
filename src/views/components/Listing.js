@@ -1,20 +1,20 @@
 import React from 'react'
-import { Media } from 'react-bootstrap'
+import { Media, Button } from 'react-bootstrap'
 
 export default class Listing extends React.Component {
   render(){
     return (
-      <Media.ListItem>
+      <Button >
         <Media.Left>
           <img width={64} height={64} src="/thumbnail.png" alt="thumbnail" />
         </Media.Left>
         <Media.Body>
           <Media.Heading>Media heading</Media.Heading>
           <p>
-            Cras sit
+            Cras siiyr
           </p>
         </Media.Body>
-      </Media.ListItem>
+      </Button >
     )
   }
 }

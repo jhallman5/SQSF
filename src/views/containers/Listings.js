@@ -6,11 +6,11 @@ import Listing from '../components/Listing.js'
 export default class Listings extends React.Component {
   render(){
     return (
-      <Media.List>
+      <div>
         <Listing />
         <Listing />
         <Listing />
-      </Media.List>
+      </div>
     )
   }
 }

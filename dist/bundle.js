@@ -21223,13 +21223,33 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Home = function (_React$Component) {
   _inherits(Home, _React$Component);
 
-  function Home() {
+  function Home(props) {
     _classCallCheck(this, Home);
 
-    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
+
+    _this.state = { width: 0, height: 0 };
+    _this.updateWindowDimensions = _this.updateWindowDimensions.bind(_this);
+    return _this;
   }
 
   _createClass(Home, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.updateWindowDimensions();
+      window.addEventListener('resize', this.updateWindowDimensions);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+  }, {
+    key: 'updateWindowDimensions',
+    value: function updateWindowDimensions() {
+      this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+  }, {
     key: 'fetchData',
     value: function fetchData() {
       this.props.fetchData();
@@ -21237,7 +21257,25 @@ var Home = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_Listings2.default, null);
+      console.log(this.state);
+      return _react2.default.createElement(
+        'div',
+        { className: 'home' },
+        _react2.default.createElement(
+          'div',
+          { className: 'listing-col' },
+          _react2.default.createElement(_Listings2.default, null)
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'listing-map' },
+          _react2.default.createElement(
+            'div',
+            null,
+            ' Map '
+          )
+        )
+      );
     }
   }]);
 
@@ -41512,7 +41550,7 @@ var Listings = function (_React$Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        _reactBootstrap.Media.List,
+        'div',
         null,
         _react2.default.createElement(_Listing2.default, null),
         _react2.default.createElement(_Listing2.default, null),
@@ -41566,7 +41604,7 @@ var Listing = function (_React$Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        _reactBootstrap.Media.ListItem,
+        _reactBootstrap.Button,
         null,
         _react2.default.createElement(
           _reactBootstrap.Media.Left,
@@ -41584,7 +41622,7 @@ var Listing = function (_React$Component) {
           _react2.default.createElement(
             'p',
             null,
-            'Cras sit'
+            'Cras siiyr'
           )
         )
       );
