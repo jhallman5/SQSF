@@ -21230,6 +21230,7 @@ var Home = function (_React$Component) {
 
     _this.state = { width: 0, height: 0 };
     _this.updateWindowDimensions = _this.updateWindowDimensions.bind(_this);
+    _this.fetchData = _this.fetchData.bind(_this);
     return _this;
   }
 
@@ -21253,11 +21254,11 @@ var Home = function (_React$Component) {
     key: 'fetchData',
     value: function fetchData() {
       this.props.fetchData();
+      console.log(this.props);
     }
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.state.width);
       return _react2.default.createElement(
         'div',
         { className: 'home' },
@@ -21274,6 +21275,11 @@ var Home = function (_React$Component) {
             null,
             ' Map '
           )
+        ),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.fetchData },
+          'API call'
         )
       );
     }
