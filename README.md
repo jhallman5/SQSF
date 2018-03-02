@@ -16,3 +16,6 @@ To run the dev server (nodemon)
 ```
 npm run dev
 ```
+
+## TODOS
+- Nav spacing / dynamic resizing 

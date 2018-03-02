@@ -1,8 +1,20 @@
 import React from 'react'
-import { Navbar, Nav, NavDropdown, MenuItem } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown, MenuItem, Button } from 'react-bootstrap'
+
+import Filters from './Filters'
 
 export default class Navigation extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      showFilters: true
+    }
+    this.toggleFilters = this.toggleFilters.bind(this)
+  }
 
+  toggleFilters(){
+    this.setState({ showFilters: !this.state.showFilters})
+  }
   render(){
     return (
       <Navbar >
@@ -15,14 +27,8 @@ export default class Navigation extends React.Component {
           </ Navbar.Text>
         </Navbar.Header>
         <Nav pullRight>
-          <NavDropdown title="Primary" id="basic-nav-dropdown">
-            <MenuItem>Price</MenuItem>
-            <MenuItem>School Rating</MenuItem>
-          </NavDropdown>
-          <NavDropdown title="Secondary" id="basic-nav-dropdown">
-            <MenuItem>Price</MenuItem>
-            <MenuItem>School Rating</MenuItem>
-          </NavDropdown>
+          <Button onClick={this.toggleFilters}>Filters</Button>
+          <Filters />
         </Nav>
       </Navbar>
     )
