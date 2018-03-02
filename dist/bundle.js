@@ -21257,7 +21257,7 @@ var Home = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.state);
+      console.log(this.state.width);
       return _react2.default.createElement(
         'div',
         { className: 'home' },
@@ -21266,7 +21266,7 @@ var Home = function (_React$Component) {
           { className: 'listing-col' },
           _react2.default.createElement(_Listings2.default, null)
         ),
-        _react2.default.createElement(
+        this.state.width > 750 && _react2.default.createElement(
           'div',
           { className: 'listing-map' },
           _react2.default.createElement(

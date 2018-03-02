@@ -30,15 +30,17 @@ class Home extends React.Component {
   }
 
   render(){
-    console.log(this.state)
+    console.log(this.state.width)
     return (
       <div className='home'>
         <div className="listing-col">
           <Listings />
         </div>
-        <div className="listing-map">
-          <div> Map </div>
-        </div>
+        { this.state.width > 750 &&
+          <div className="listing-map">
+            <div> Map </div>
+          </div>
+        }
       </div>
     )
   }
