@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import Listings from './Listings'
+
 import { fetchData } from '../actions'
 
 class Home extends React.Component {
@@ -11,10 +13,7 @@ class Home extends React.Component {
 
   render(){
     return (
-      <div>
-        <h1>React app up and running.</h1>
-        <button onClick={this.fetchData.bind(this)}>API</button>
-      </div>
+      <Listings />
     )
   }
 }
