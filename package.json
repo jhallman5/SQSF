@@ -4,8 +4,8 @@
   "description": "React practice",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/server.js",
-    "dev": "nodemon ./src/server.js",
+    "start": "node ./src/controllers/server.js",
+    "dev": "nodemon ./src/controllers/server.js",
     "build": "webpack",
     "build:prod": "webpack -p",
     "watch": "webpack --watch",

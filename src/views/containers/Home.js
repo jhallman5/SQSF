@@ -1,7 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
-import store from '../store'
 
 import { fetchData } from '../actions'
 
@@ -10,7 +8,7 @@ class Home extends React.Component {
   fetchData(){
     this.props.fetchData()
   }
-  
+
   render(){
     return (
       <div>

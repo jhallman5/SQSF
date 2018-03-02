@@ -1,13 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+
 import Home from './containers/Home'
+import Navigation from './containers/Navigation'
 
 import store from './store'
 
 const App = () => (
   <Provider store={store}>
-    <Home />
+    <div>
+      <Navigation />
+      <Home />
+    </div>
   </Provider>
 )
 
