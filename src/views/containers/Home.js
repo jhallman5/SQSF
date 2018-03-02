@@ -1,19 +1,48 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import Listings from './Listings'
+
 import { fetchData } from '../actions'
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { width: 0, height: 0 };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
+    this.fetchData = this.fetchData.bind(this)
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions()
+    window.addEventListener('resize', this.updateWindowDimensions)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions)
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight })
+  }
 
   fetchData(){
     this.props.fetchData()
+    console.log(this.props)
   }
 
   render(){
     return (
-      <div>
-        <h1>React app up and running.</h1>
-        <button onClick={this.fetchData.bind(this)}>API</button>
+      <div className='home'>
+        <div className="listing-col">
+          <Listings />
+        </div>
+        { this.state.width > 750 &&
+          <div className="listing-map">
+            <div> Map </div>
+          </div>
+        }
+        <button onClick={this.fetchData}>API call</button>
       </div>
     )
   }

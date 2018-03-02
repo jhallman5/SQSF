@@ -18,4 +18,5 @@ npm run dev
 ```
 
 ## TODOS
-- Nav spacing / dynamic resizing 
+- Nav spacing / dynamic resizing
+- Update naming convention for redux example

@@ -1,0 +1,17 @@
+.listing-col {
+  background-color: grey;
+  width: 40vw;
+  min-width: 400px;
+  max-width: 750px;
+  flex-grow: 1;
+}
+
+.listing-map {
+  background-color: blue;
+  width: 60vw;
+  flex-grow: 2;
+}
+
+.home {
+  display: flex;
+}
