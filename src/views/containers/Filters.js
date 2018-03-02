@@ -5,7 +5,7 @@ export default class Filters extends React.Component {
 
   render(){
     return (
-      <Nav>
+      <Nav pullRight>
         <NavDropdown title="Primary" id="basic-nav-dropdown">
           <MenuItem>Price</MenuItem>
           <MenuItem>School Rating</MenuItem>

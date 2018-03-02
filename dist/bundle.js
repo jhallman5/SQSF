@@ -41240,7 +41240,7 @@ var Navigation = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Navigation.__proto__ || Object.getPrototypeOf(Navigation)).call(this, props));
 
     _this.state = {
-      showFilters: true
+      showFilters: false
     };
     _this.toggleFilters = _this.toggleFilters.bind(_this);
     return _this;
@@ -41283,7 +41283,7 @@ var Navigation = function (_React$Component) {
             { onClick: this.toggleFilters },
             'Filters'
           ),
-          _react2.default.createElement(_Filters2.default, null)
+          this.state.showFilters && _react2.default.createElement(_Filters2.default, null)
         )
       );
     }
@@ -41335,7 +41335,7 @@ var Filters = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         _reactBootstrap.Nav,
-        null,
+        { pullRight: true },
         _react2.default.createElement(
           _reactBootstrap.NavDropdown,
           { title: 'Primary', id: 'basic-nav-dropdown' },

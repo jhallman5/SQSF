@@ -7,7 +7,7 @@ export default class Navigation extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      showFilters: true
+      showFilters: false
     }
     this.toggleFilters = this.toggleFilters.bind(this)
   }
@@ -28,7 +28,9 @@ export default class Navigation extends React.Component {
         </Navbar.Header>
         <Nav pullRight>
           <Button onClick={this.toggleFilters}>Filters</Button>
-          <Filters />
+          { this.state.showFilters &&
+            <Filters />
+          }
         </Nav>
       </Navbar>
     )
