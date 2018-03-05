@@ -6,11 +6,12 @@ const zwsid = process.env.ZWSID
 const zillow = new Zillow(zwsid)
 
 const parameters = {
-  zpid: 1111112
+  address: 'San Francisco',
+  citystatezip: 'San Francisco'
 }
 
-router.get('/API', (req, res) => {
-  zillow.get('GetZestimate', parameters)
+router.get('/Zillow_API', (req, res) => {
+  zillow.get('GetSearchResults', parameters)
     .then(results => res.json(results))
     .catch(error => console.log('Error in fetching Zillow API', error))
 })
