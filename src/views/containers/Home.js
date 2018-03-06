@@ -37,7 +37,7 @@ class Home extends React.Component {
       <Grid fluid>
         <Row>
           <Col md={6}>
-            <Listings />
+            <Listings width={this.state.width}/>
           </Col>
           { this.state.width > 1000 &&
             <Col className='listing-map' md={6}>

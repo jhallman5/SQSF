@@ -1,8 +1,9 @@
 import React from 'react'
-import { Media, Button, Badge } from 'react-bootstrap'
+import { Media, Button, Badge, Grid, Row, Col, Clearfix } from 'react-bootstrap'
 
 export default class Listing extends React.Component {
   render(){
+    console.log('====>', this.props.width)
     return (
       <Button >
         <Media.Left>
@@ -10,10 +11,27 @@ export default class Listing extends React.Component {
         </Media.Left>
         <Media.Body>
           <Media.Heading>Address</Media.Heading>
-           <div className='media-body'>
-            <div className='media-column'>0</div>
-            <div className='media-column1'>1</div>
-           </div>
+           <Grid className='media-body'>
+            <Row>
+              <Col md={6}>
+                <Badge>$400,000</Badge>
+              </Col>
+              <Col md={6}>
+                <Badge>4</Badge> Beds
+              </Col>
+            </Row>
+            <Row>
+            { this.props.width > 1000 &&
+              <Col md={6}>
+                <Badge>1200</Badge> sqft
+              </Col>
+              }
+                <Col md={6}>
+                  <Badge>4</Badge> Baths
+                </Col>
+
+            </Row>
+           </Grid>
         </Media.Body>
       </Button >
     )

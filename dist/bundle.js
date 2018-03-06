@@ -29406,7 +29406,7 @@ var Home = function (_React$Component) {
           _react2.default.createElement(
             _reactBootstrap.Col,
             { md: 6 },
-            _react2.default.createElement(_Listings2.default, null)
+            _react2.default.createElement(_Listings2.default, { width: this.state.width })
           ),
           this.state.width > 1000 && _react2.default.createElement(
             _reactBootstrap.Col,
@@ -40946,9 +40946,9 @@ var Listings = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_Listing2.default, null),
-        _react2.default.createElement(_Listing2.default, null),
-        _react2.default.createElement(_Listing2.default, null)
+        _react2.default.createElement(_Listing2.default, { width: this.props.width }),
+        _react2.default.createElement(_Listing2.default, { width: this.props.width }),
+        _react2.default.createElement(_Listing2.default, { width: this.props.width })
       );
     }
   }]);
@@ -40997,6 +40997,7 @@ var Listing = function (_React$Component) {
   _createClass(Listing, [{
     key: 'render',
     value: function render() {
+      console.log('====>', this.props.width);
       return _react2.default.createElement(
         _reactBootstrap.Button,
         null,
@@ -41014,17 +41015,54 @@ var Listing = function (_React$Component) {
             'Address'
           ),
           _react2.default.createElement(
-            'div',
+            _reactBootstrap.Grid,
             { className: 'media-body' },
             _react2.default.createElement(
-              'div',
-              { className: 'media-column' },
-              '0'
+              _reactBootstrap.Row,
+              null,
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { md: 6 },
+                _react2.default.createElement(
+                  _reactBootstrap.Badge,
+                  null,
+                  '$400,000'
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { md: 6 },
+                _react2.default.createElement(
+                  _reactBootstrap.Badge,
+                  null,
+                  '4'
+                ),
+                ' Beds'
+              )
             ),
             _react2.default.createElement(
-              'div',
-              { className: 'media-column1' },
-              '1'
+              _reactBootstrap.Row,
+              null,
+              this.props.width > 1000 && _react2.default.createElement(
+                _reactBootstrap.Col,
+                { md: 6 },
+                _react2.default.createElement(
+                  _reactBootstrap.Badge,
+                  null,
+                  '1200'
+                ),
+                ' sqft'
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { md: 6 },
+                _react2.default.createElement(
+                  _reactBootstrap.Badge,
+                  null,
+                  '4'
+                ),
+                ' Baths'
+              )
             )
           )
         )

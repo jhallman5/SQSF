@@ -7,9 +7,9 @@ export default class Listings extends React.Component {
   render(){
     return (
       <div>
-        <Listing />
-        <Listing />
-        <Listing />
+        <Listing width={this.props.width}/>
+        <Listing width={this.props.width}/>
+        <Listing width={this.props.width}/>
       </div>
     )
   }
