@@ -1,4 +1,5 @@
 .listing-col {
+  display: flex;
   background-color: grey;
   width: 40vw;
   min-width: 400px;
@@ -12,6 +13,15 @@
   flex-grow: 2;
 }
 
-.home {
-  display: flex;
+.listing-image {
+  max-height: 125px;
+  width: 15vw;
+}
+
+.media-column {
+  background-color: red;
+}
+
+.media-column1 {
+  background-color: blue;
 }

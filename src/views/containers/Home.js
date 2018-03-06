@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Grid, Row, Col } from 'react-bootstrap'
 
 import Listings from './Listings'
 
@@ -33,17 +34,18 @@ class Home extends React.Component {
 
   render(){
     return (
-      <div className='home'>
-        <div className="listing-col">
-          <Listings />
-        </div>
-        { this.state.width > 750 &&
-          <div className="listing-map">
-            <div> Map </div>
-          </div>
-        }
-        <button onClick={this.fetchData}>API call</button>
-      </div>
+      <Grid fluid>
+        <Row>
+          <Col md={6}>
+            <Listings width={this.state.width}/>
+          </Col>
+          { this.state.width > 1000 &&
+            <Col className='listing-map' md={6}>
+              <div> Map </div>
+            </Col>
+          }
+        </Row>
+      </Grid>
     )
   }
 }
