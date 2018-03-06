@@ -41004,7 +41004,7 @@ var Listing = function (_React$Component) {
         _react2.default.createElement(
           _reactBootstrap.Media.Left,
           null,
-          _react2.default.createElement('img', { width: 200, height: 125, src: './images/defaultPhoto.png', alt: 'thumbnail' })
+          _react2.default.createElement('img', { className: 'listing-image', src: './images/defaultPhoto.png', alt: 'thumbnail' })
         ),
         _react2.default.createElement(
           _reactBootstrap.Media.Body,

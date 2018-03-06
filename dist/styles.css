@@ -13,6 +13,11 @@
   flex-grow: 2;
 }
 
+.listing-image {
+  max-height: 125px;
+  width: 15vw;
+}
+
 .media-column {
   background-color: red;
 }

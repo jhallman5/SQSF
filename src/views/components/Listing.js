@@ -7,7 +7,7 @@ export default class Listing extends React.Component {
     return (
       <Button >
         <Media.Left>
-          <img width={200} height={125} src="./images/defaultPhoto.png" alt="thumbnail" />
+          <img className='listing-image' src="./images/defaultPhoto.png" alt="thumbnail" />
         </Media.Left>
         <Media.Body>
           <Media.Heading>Address</Media.Heading>
