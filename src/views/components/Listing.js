@@ -10,7 +10,7 @@ export default class Listing extends React.Component {
           <img className='listing-image' src="./images/defaultPhoto.png" alt="thumbnail" />
         </Media.Left>
         <Media.Body>
-          <Media.Heading>Address</Media.Heading>
+          <Media.Heading>Address {this.props.number}</Media.Heading>
            <Grid className='media-body'>
             <Row>
               <Col md={6}>
