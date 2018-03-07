@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Grid, Row, Col } from 'react-bootstrap'
 
 import Listings from './Listings'
+import Map from './Map'
 
 import { fetchData } from '../actions'
 
@@ -40,8 +41,14 @@ class Home extends React.Component {
             <Listings width={this.state.width}/>
           </Col>
           { this.state.width > 1000 &&
-            <Col className='listing-map' md={6}>
-              <div> Map </div>
+            <Col md={6}>
+            <Map
+              isMarkerShown
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`}
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: `400px` }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+            />
             </Col>
           }
         </Row>
