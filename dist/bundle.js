@@ -33061,7 +33061,11 @@ var Home = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
 
-    _this.state = { width: 0, height: 0 };
+    _this.state = {
+      width: 0,
+      height: 0,
+      page: 0
+    };
     _this.updateWindowDimensions = _this.updateWindowDimensions.bind(_this);
     _this.fetchData = _this.fetchData.bind(_this);
     return _this;
@@ -33101,7 +33105,7 @@ var Home = function (_React$Component) {
           _react2.default.createElement(
             _reactBootstrap.Col,
             { md: 6 },
-            _react2.default.createElement(_Listings2.default, { width: this.state.width })
+            _react2.default.createElement(_Listings2.default, { width: this.state.width, page: this.state.page })
           ),
           this.state.width > 1000 && _react2.default.createElement(
             _reactBootstrap.Col,
@@ -44627,8 +44631,8 @@ var Listings = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        listings,
-        _react2.default.createElement(_Pagination2.default, null)
+        listings.slice(4 * this.props.page, 4 * this.props.page + 4),
+        _react2.default.createElement(_Pagination2.default, { page: this.props.page })
       );
     }
   }]);
@@ -44753,18 +44757,6 @@ var Listing = function (_React$Component) {
 
   return Listing;
 }(_react2.default.Component);
-
-// <div className='media-body'>
-//   <div className='media-column'>
-//     <div className='media-item'><Badge>4</Badge> Beds</div>
-//     <div className='media-item'><Badge>4</Badge> Bath</div>
-//   </div>
-//   <div className='media-column1'>
-//     <div className='media-item'><Badge>1400</Badge> Sqft</div>
-//     <div className='media-item'><Badge>$400,000</Badge></div>
-//   </div>
-// </div>
-
 
 exports.default = Listing;
 
@@ -55904,6 +55896,8 @@ var Pagination = function (_React$Component) {
           { previous: true, href: '#' },
           'Previous'
         ),
+        'Page ',
+        this.props.page + 1,
         _react2.default.createElement(
           _reactBootstrap.Pager.Item,
           { next: true, href: '#' },

@@ -10,7 +10,11 @@ import { fetchData } from '../actions'
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { width: 0, height: 0 };
+    this.state = {
+      width: 0,
+      height: 0,
+      page: 0
+     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.fetchData = this.fetchData.bind(this)
   }
@@ -38,7 +42,7 @@ class Home extends React.Component {
       <Grid fluid>
         <Row>
           <Col md={6}>
-            <Listings width={this.state.width}/>
+            <Listings width={this.state.width} page={this.state.page} />
           </Col>
           { this.state.width > 1000 &&
             <Col md={6}>

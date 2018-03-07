@@ -13,8 +13,8 @@ export default class Listings extends React.Component {
 
     return (
       <div>
-        {listings}
-        <Pagination />
+        {listings.slice(4 * this.props.page, (4 * this.props.page) + 4)}
+        <Pagination page={this.props.page}/>
       </div>
     )
   }
