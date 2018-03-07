@@ -33110,7 +33110,7 @@ var Home = function (_React$Component) {
               isMarkerShown: true,
               googleMapURL: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDhMv9OI_9ABuLNbT_SasnE56B2aTnvHX4&v=3.exp&libraries=geometry,drawing,places',
               loadingElement: _react2.default.createElement('div', { style: { height: '100%' } }),
-              containerElement: _react2.default.createElement('div', { style: { height: '400px' } }),
+              containerElement: _react2.default.createElement('div', { style: { height: '90vh' } }),
               mapElement: _react2.default.createElement('div', { style: { height: '100%' } })
             })
           )
@@ -44782,10 +44782,10 @@ var MyMapComponent = (0, _reactGoogleMaps.withScriptjs)((0, _reactGoogleMaps.wit
   return _react2.default.createElement(
     _reactGoogleMaps.GoogleMap,
     {
-      defaultZoom: 8,
-      defaultCenter: { lat: -34.397, lng: 150.644 }
+      defaultZoom: 12.4,
+      defaultCenter: { lat: 37.7525, lng: -122.4476 }
     },
-    props.isMarkerShown && _react2.default.createElement(_reactGoogleMaps.Marker, { position: { lat: -34.397, lng: 150.644 } })
+    props.isMarkerShown && _react2.default.createElement(_reactGoogleMaps.Marker, { position: { lat: 37.7749, lng: 122.4194 } })
   );
 }));
 
