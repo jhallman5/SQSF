@@ -27,6 +27,7 @@ class Listings extends React.Component {
     for(let i = 0; i < 10; i++) {
       listings.push(<Listing width={this.props.width} key={i} number={i}/>)
     }
+    console.log('Props: ', this.props)
 
     return (
       <div>
@@ -39,7 +40,7 @@ class Listings extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.sample
+    listings: state.listings
   }
 }
 

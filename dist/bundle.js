@@ -44665,6 +44665,7 @@ var Listings = function (_React$Component) {
       for (var i = 0; i < 10; i++) {
         listings.push(_react2.default.createElement(_Listing2.default, { width: this.props.width, key: i, number: i }));
       }
+      console.log('Props: ', this.props);
 
       return _react2.default.createElement(
         'div',
@@ -44680,7 +44681,7 @@ var Listings = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    data: state.sample
+    listings: state.listings
   };
 };
 
@@ -55878,10 +55879,15 @@ var _sampleReducer = __webpack_require__(578);
 
 var _sampleReducer2 = _interopRequireDefault(_sampleReducer);
 
+var _listings = __webpack_require__(580);
+
+var _listings2 = _interopRequireDefault(_listings);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
-  sample: _sampleReducer2.default
+  sample: _sampleReducer2.default,
+  listings: _listings2.default
 });
 
 /***/ }),
@@ -55894,9 +55900,6 @@ exports.default = (0, _redux.combineReducers)({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 exports.default = reducer;
 var initialState = {
   data: false
@@ -55907,18 +55910,18 @@ function reducer() {
   var action = arguments[1];
 
   switch (action.type) {
-    case 'FETCH_DATA_FULFILLED':
-      {
-        return _extends({}, state, {
-          data: action.payload
-        });
-      }
-    case 'FETCH_MOCK_FULFILLED':
-      {
-        return _extends({}, state, {
-          data: action.payload
-        });
-      }
+    // case 'FETCH_DATA_FULFILLED': {
+    //   return {
+    //     ...state,
+    //     data: action.payload
+    //   }
+    // }
+    // case 'FETCH_MOCK_FULFILLED': {
+    //   return {
+    //     ...state,
+    //     data: action.payload
+    //   }
+    // }
     default:
       {
         return state;
@@ -55988,6 +55991,39 @@ var Pagination = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Pagination;
+
+/***/ }),
+/* 580 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = reducer;
+var initialState = [];
+
+function reducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'FETCH_DATA_FULFILLED':
+      {
+        return action.payload;
+      }
+    case 'FETCH_MOCK_FULFILLED':
+      {
+        return action.payload;
+      }
+    default:
+      {
+        return state;
+      }
+  }
+}
 
 /***/ })
 /******/ ]);
