@@ -33105,7 +33105,12 @@ var Home = function (_React$Component) {
           _react2.default.createElement(
             _reactBootstrap.Col,
             { md: 6 },
-            _react2.default.createElement(_Listings2.default, { width: this.state.width, page: this.state.page })
+            _react2.default.createElement(_Listings2.default, { width: this.state.width, page: this.state.page }),
+            _react2.default.createElement(
+              'button',
+              { onClick: this.fetchData },
+              'API'
+            )
           ),
           this.state.width > 1000 && _react2.default.createElement(
             _reactBootstrap.Col,
@@ -55252,7 +55257,7 @@ function fetchData() {
   return {
     type: 'FETCH_DATA',
     payload: new Promise(function (resolve, reject) {
-      fetch('/API').then(function (response) {
+      fetch('/Zillow_API').then(function (response) {
         return response.json();
       }).then(function (json) {
         return resolve(json);

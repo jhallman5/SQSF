@@ -43,6 +43,7 @@ class Home extends React.Component {
         <Row>
           <Col md={6}>
             <Listings width={this.state.width} page={this.state.page} />
+            <button onClick={this.fetchData}>API</button>
           </Col>
           { this.state.width > 1000 &&
             <Col md={6}>
