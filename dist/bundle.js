@@ -33068,6 +33068,7 @@ var Home = function (_React$Component) {
     };
     _this.updateWindowDimensions = _this.updateWindowDimensions.bind(_this);
     _this.fetchData = _this.fetchData.bind(_this);
+    _this.fetchMock = _this.fetchMock.bind(_this);
     return _this;
   }
 
@@ -33094,6 +33095,12 @@ var Home = function (_React$Component) {
       console.log(this.props);
     }
   }, {
+    key: 'fetchMock',
+    value: function fetchMock() {
+      this.props.fetchMock();
+      console.log(this.props);
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -33110,6 +33117,11 @@ var Home = function (_React$Component) {
               'button',
               { onClick: this.fetchData },
               'API'
+            ),
+            _react2.default.createElement(
+              'button',
+              { onClick: this.fetechMock },
+              'Mock'
             )
           ),
           this.state.width > 1000 && _react2.default.createElement(

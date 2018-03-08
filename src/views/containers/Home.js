@@ -17,6 +17,7 @@ class Home extends React.Component {
      };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.fetchData = this.fetchData.bind(this)
+    this.fetchMock = this.fetchMock.bind(this)
   }
 
   componentDidMount() {
@@ -37,6 +38,11 @@ class Home extends React.Component {
     console.log(this.props)
   }
 
+  fetchMock(){
+    this.props.fetchMock()
+    console.log(this.props)
+  }
+
   render(){
     return (
       <Grid fluid>
@@ -44,6 +50,7 @@ class Home extends React.Component {
           <Col md={6}>
             <Listings width={this.state.width} page={this.state.page} />
             <button onClick={this.fetchData}>API</button>
+            <button onClick={this.fetechMock}>Mock</button>
           </Col>
           { this.state.width > 1000 &&
             <Col md={6}>
