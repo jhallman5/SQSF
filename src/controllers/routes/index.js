@@ -18,9 +18,7 @@ router.get('/Zillow_API', (req, res) => {
 })
 
 router.get('/MockData', (req, res) => {
-  data = model.generateMockListings10()
-  console.log(data)
-  return data
+  res.json(model.generateMockListings10())
 })
 
 router.get('/*', (req, res) => {

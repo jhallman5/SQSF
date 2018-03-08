@@ -33120,7 +33120,7 @@ var Home = function (_React$Component) {
             ),
             _react2.default.createElement(
               'button',
-              { onClick: this.fetechMock },
+              { onClick: this.fetchMock },
               'Mock'
             )
           ),
@@ -33153,6 +33153,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchData: function fetchData() {
       return dispatch((0, _actions.fetchData)());
+    },
+    fetchMock: function fetchMock() {
+      return dispatch((0, _actions.fetchMock)());
     }
   };
 };
@@ -44642,7 +44645,7 @@ var Listings = function (_React$Component) {
     value: function render() {
       var listings = [];
       for (var i = 0; i < 10; i++) {
-        listings.push(_react2.default.createElement(_Listing2.default, { width: this.props.width, number: i }));
+        listings.push(_react2.default.createElement(_Listing2.default, { width: this.props.width, key: i, number: i }));
       }
 
       return _react2.default.createElement(
@@ -55265,11 +55268,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.fetchData = fetchData;
+exports.fetchMock = fetchMock;
 function fetchData() {
   return {
     type: 'FETCH_DATA',
     payload: new Promise(function (resolve, reject) {
       fetch('/Zillow_API').then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return resolve(json);
+      }).catch(function (error) {
+        return console.log('Error in Action', error);
+      });
+    })
+  };
+}
+
+function fetchMock() {
+  return {
+    type: 'FETCH_MOCK',
+    payload: new Promise(function (resolve, reject) {
+      fetch('/MockData').then(function (response) {
         return response.json();
       }).then(function (json) {
         return resolve(json);
@@ -55854,6 +55873,12 @@ function reducer() {
 
   switch (action.type) {
     case 'FETCH_DATA_FULFILLED':
+      {
+        return _extends({}, state, {
+          data: action.payload
+        });
+      }
+    case 'FETCH_MOCK_FULFILLED':
       {
         return _extends({}, state, {
           data: action.payload

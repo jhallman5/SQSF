@@ -17,6 +17,7 @@ const generateMockListings10 = () => {
       }
     )
   }
+  return mockListings
 }
 
 module.exports = {

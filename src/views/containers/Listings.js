@@ -8,7 +8,7 @@ export default class Listings extends React.Component {
   render(){
     let listings = []
     for(let i = 0; i < 10; i++) {
-      listings.push(<Listing width={this.props.width} number={i}/>)
+      listings.push(<Listing width={this.props.width} key={i} number={i}/>)
     }
 
     return (

@@ -5,7 +5,7 @@ import { Grid, Row, Col } from 'react-bootstrap'
 import Listings from './Listings'
 import Map from './Map'
 
-import { fetchData } from '../actions'
+import { fetchData, fetchMock } from '../actions'
 
 class Home extends React.Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class Home extends React.Component {
           <Col md={6}>
             <Listings width={this.state.width} page={this.state.page} />
             <button onClick={this.fetchData}>API</button>
-            <button onClick={this.fetechMock}>Mock</button>
+            <button onClick={this.fetchMock}>Mock</button>
           </Col>
           { this.state.width > 1000 &&
             <Col md={6}>
@@ -77,7 +77,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchData: () => dispatch(fetchData())
+    fetchData: () => dispatch(fetchData()),
+    fetchMock: () =>  dispatch(fetchMock())
   }
 }
 

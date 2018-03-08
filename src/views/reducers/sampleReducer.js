@@ -10,6 +10,12 @@ export default function reducer(state = initialState, action) {
         data: action.payload
       }
     }
+    case 'FETCH_MOCK_FULFILLED': {
+      return {
+        ...state,
+        data: action.payload
+      }
+    }
     default: {
       return state
     }

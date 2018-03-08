@@ -9,3 +9,15 @@ export function fetchData() {
     })
   }
 }
+
+export function fetchMock() {
+  return {
+    type: 'FETCH_MOCK',
+    payload: new Promise((resolve, reject) => {
+      fetch('/MockData')
+        .then(response => response.json())
+        .then(json => resolve(json))
+        .catch(error => console.log('Error in Action', error))
+    })
+  }
+}
