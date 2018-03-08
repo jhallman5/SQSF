@@ -1,10 +1,27 @@
 import React from 'react'
+import { connect }  from 'react-redux'
 import { Pager } from 'react-bootstrap'
+
+import { fetchData, fetchMock } from '../actions'
 
 import Listing from '../components/Listing.js'
 import Pagination from './Pagination'
 
-export default class Listings extends React.Component {
+class Listings extends React.Component {
+  constructor(props) {
+    super(props)
+    this.fetchData = this.fetchData.bind(this)
+  }
+
+  fetchData(){
+    this.props.fetchData()
+    console.log(this.props)
+  }
+
+  componentWillMount() {
+    this.props.fetchMock()
+  }
+
   render(){
     let listings = []
     for(let i = 0; i < 10; i++) {
@@ -19,3 +36,19 @@ export default class Listings extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    data: state.sample
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchData: () => dispatch(fetchData()),
+    fetchMock: () =>  dispatch(fetchMock())
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Listings)

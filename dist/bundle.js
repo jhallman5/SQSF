@@ -44613,7 +44613,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = __webpack_require__(135);
+
 var _reactBootstrap = __webpack_require__(38);
+
+var _actions = __webpack_require__(570);
 
 var _Listing = __webpack_require__(414);
 
@@ -44634,13 +44638,27 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Listings = function (_React$Component) {
   _inherits(Listings, _React$Component);
 
-  function Listings() {
+  function Listings(props) {
     _classCallCheck(this, Listings);
 
-    return _possibleConstructorReturn(this, (Listings.__proto__ || Object.getPrototypeOf(Listings)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Listings.__proto__ || Object.getPrototypeOf(Listings)).call(this, props));
+
+    _this.fetchData = _this.fetchData.bind(_this);
+    return _this;
   }
 
   _createClass(Listings, [{
+    key: 'fetchData',
+    value: function fetchData() {
+      this.props.fetchData();
+      console.log(this.props);
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.fetchMock();
+    }
+  }, {
     key: 'render',
     value: function render() {
       var listings = [];
@@ -44660,7 +44678,24 @@ var Listings = function (_React$Component) {
   return Listings;
 }(_react2.default.Component);
 
-exports.default = Listings;
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    data: state.sample
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchData: function fetchData() {
+      return dispatch((0, _actions.fetchData)());
+    },
+    fetchMock: function fetchMock() {
+      return dispatch((0, _actions.fetchMock)());
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Listings);
 
 /***/ }),
 /* 414 */
