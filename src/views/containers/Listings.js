@@ -37,7 +37,8 @@ class Listings extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    listings: state.listings
+    listings: state.listings,
+    page: state.pagination
   }
 }
 

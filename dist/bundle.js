@@ -33087,8 +33087,6 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(91);
-
 var _reactBootstrap = __webpack_require__(32);
 
 var _Listings = __webpack_require__(414);
@@ -33098,8 +33096,6 @@ var _Listings2 = _interopRequireDefault(_Listings);
 var _Map = __webpack_require__(417);
 
 var _Map2 = _interopRequireDefault(_Map);
-
-var _actions = __webpack_require__(193);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33119,12 +33115,9 @@ var Home = function (_React$Component) {
 
     _this.state = {
       width: 0,
-      height: 0,
-      page: 0
+      height: 0
     };
     _this.updateWindowDimensions = _this.updateWindowDimensions.bind(_this);
-    _this.fetchData = _this.fetchData.bind(_this);
-    _this.fetchMock = _this.fetchMock.bind(_this);
     return _this;
   }
 
@@ -33145,18 +33138,6 @@ var Home = function (_React$Component) {
       this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
   }, {
-    key: 'fetchData',
-    value: function fetchData() {
-      this.props.fetchData();
-      console.log(this.props);
-    }
-  }, {
-    key: 'fetchMock',
-    value: function fetchMock() {
-      this.props.fetchMock();
-      console.log(this.props);
-    }
-  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -33168,17 +33149,7 @@ var Home = function (_React$Component) {
           _react2.default.createElement(
             _reactBootstrap.Col,
             { md: 6 },
-            _react2.default.createElement(_Listings2.default, { width: this.state.width, page: this.state.page }),
-            _react2.default.createElement(
-              'button',
-              { onClick: this.fetchData },
-              'API'
-            ),
-            _react2.default.createElement(
-              'button',
-              { onClick: this.fetchMock },
-              'Mock'
-            )
+            _react2.default.createElement(_Listings2.default, { width: this.state.width })
           ),
           this.state.width > 1000 && _react2.default.createElement(
             _reactBootstrap.Col,
@@ -33199,24 +33170,7 @@ var Home = function (_React$Component) {
   return Home;
 }(_react2.default.Component);
 
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    data: state.sample
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    fetchData: function fetchData() {
-      return dispatch((0, _actions.fetchData)());
-    },
-    fetchMock: function fetchMock() {
-      return dispatch((0, _actions.fetchMock)());
-    }
-  };
-};
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);
+exports.default = Home;
 
 /***/ }),
 /* 270 */
@@ -44735,7 +44689,8 @@ var Listings = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    listings: state.listings
+    listings: state.listings,
+    page: state.pagination
   };
 };
 
@@ -44917,7 +44872,7 @@ var Pagination = function (_React$Component) {
         null,
         _react2.default.createElement(
           _reactBootstrap.Pager.Item,
-          { previous: true, href: '#' },
+          { previous: true, onClick: this.props.decrementPage },
           'Previous'
         ),
         'Page ',

@@ -8,7 +8,7 @@ class Pagination extends React.Component {
   render(){
     return (
       <Pager>
-        <Pager.Item previous href='#'>Previous</Pager.Item>
+        <Pager.Item previous onClick={this.props.decrementPage}>Previous</Pager.Item>
         Page {this.props.page + 1}
         <Pager.Item next onClick={this.props.incrementPage}>Next</Pager.Item>
       </Pager>
