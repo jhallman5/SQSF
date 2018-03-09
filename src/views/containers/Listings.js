@@ -1,16 +1,55 @@
 import React from 'react'
-import { Media } from 'react-bootstrap'
+import { connect }  from 'react-redux'
+import { Pager } from 'react-bootstrap'
+
+import { fetchData, fetchMock } from '../actions'
 
 import Listing from '../components/Listing.js'
+import Pagination from './Pagination'
 
-export default class Listings extends React.Component {
+class Listings extends React.Component {
+  constructor(props) {
+    super(props)
+    this.fetchData = this.fetchData.bind(this)
+  }
+
+  fetchData(){
+    this.props.fetchData()
+    console.log(this.props)
+  }
+
+  componentDidMount() {
+    this.props.fetchMock()
+  }
+
   render(){
     return (
       <div>
-        <Listing width={this.props.width}/>
-        <Listing width={this.props.width}/>
-        <Listing width={this.props.width}/>
+        {
+          this.props.listings.slice(this.props.listingsPerPage * this.props.page, (this.props.listingsPerPage * this.props.page) + this.props.listingsPerPage)
+            .map((listing, i) => <Listing width={this.props.width} key={i} info={listing} /> )
+        }
+        <Pagination />
       </div>
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    listings: state.listings,
+    page: state.pagination.currentPage,
+    listingsPerPage: state.pagination.listingsPerPage,
+    maxPage: state.pagination.maxPage
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchData: () => dispatch(fetchData()),
+    fetchMock: () =>  dispatch(fetchMock())
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Listings)

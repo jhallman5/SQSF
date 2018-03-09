@@ -19,4 +19,13 @@ npm run dev
 
 ## TODOS
 - Nav spacing / dynamic resizing
-- Update naming convention for redux example
+- convert components/Listing to a presentational component
+- set up dev environment
+- pagination redux is zero based, Haven't decided if that is a good idea
+- pagination should dynamically determine maxPage
+
+## Issues
+- Google maps API error. [Tracked](issuetracker.google.com/issues/63211698)
+```
+Added non-passive event listener to a scroll-blocking 'touchstart' event.
+ ```
