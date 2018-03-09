@@ -44858,13 +44858,28 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Pagination = function (_React$Component) {
   _inherits(Pagination, _React$Component);
 
-  function Pagination() {
+  function Pagination(props) {
     _classCallCheck(this, Pagination);
 
-    return _possibleConstructorReturn(this, (Pagination.__proto__ || Object.getPrototypeOf(Pagination)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Pagination.__proto__ || Object.getPrototypeOf(Pagination)).call(this, props));
+
+    _this.incrementPage = _this.incrementPage.bind(_this);
+    _this.decrementPage = _this.decrementPage.bind(_this);
+
+    return _this;
   }
 
   _createClass(Pagination, [{
+    key: 'incrementPage',
+    value: function incrementPage() {
+      this.props.page < this.props.maxPage ? this.props.incrementPage() : null;
+    }
+  }, {
+    key: 'decrementPage',
+    value: function decrementPage() {
+      this.props.page ? this.props.decrementPage() : null;
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -44872,14 +44887,14 @@ var Pagination = function (_React$Component) {
         null,
         _react2.default.createElement(
           _reactBootstrap.Pager.Item,
-          { previous: true, onClick: this.props.decrementPage },
+          { previous: true, onClick: this.decrementPage },
           'Previous'
         ),
         'Page ',
         this.props.page + 1,
         _react2.default.createElement(
           _reactBootstrap.Pager.Item,
-          { next: true, onClick: this.props.incrementPage },
+          { next: true, onClick: this.incrementPage },
           'Next'
         )
       );
@@ -44891,7 +44906,8 @@ var Pagination = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    page: state.pagination
+    page: state.pagination,
+    maxPage: 2
   };
 };
 
