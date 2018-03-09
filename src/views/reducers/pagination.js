@@ -18,12 +18,6 @@ export default function reducer(state = initialState, action) {
         currentPage: --state.currentPage
       }
     }
-    case 'SET_MAX_PAGE': {
-      return {
-        ...state,
-        maxPage: action.payload
-      }
-    }
     default: {
       return state
     }

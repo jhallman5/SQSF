@@ -21,8 +21,8 @@ npm run dev
 - Nav spacing / dynamic resizing
 - convert components/Listing to a presentational component
 - set up dev environment
-- set up redux for better handling of api/mock data
 - pagination redux is zero based, Haven't decided if that is a good idea
+- pagination should dynamically determine maxPage
 
 ## Issues
 - Google maps API error. [Tracked](issuetracker.google.com/issues/63211698)

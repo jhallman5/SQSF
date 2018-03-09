@@ -44664,8 +44664,8 @@ var Listings = function (_React$Component) {
       console.log(this.props);
     }
   }, {
-    key: 'componentWillMount',
-    value: function componentWillMount() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       this.props.fetchMock();
     }
   }, {
@@ -44676,7 +44676,7 @@ var Listings = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        this.props.listings.slice(4 * this.props.page, 4 * this.props.page + 4).map(function (listing, i) {
+        this.props.listings.slice(this.props.listingsPerPage * this.props.page, this.props.listingsPerPage * this.props.page + this.props.listingsPerPage).map(function (listing, i) {
           return _react2.default.createElement(_Listing2.default, { width: _this2.props.width, key: i, info: listing });
         }),
         _react2.default.createElement(_Pagination2.default, null)
@@ -44690,7 +44690,9 @@ var Listings = function (_React$Component) {
 var mapStateToProps = function mapStateToProps(state) {
   return {
     listings: state.listings,
-    page: state.pagination
+    page: state.pagination.currentPage,
+    listingsPerPage: state.pagination.listingsPerPage,
+    maxPage: state.pagination.maxPage
   };
 };
 
@@ -44865,7 +44867,6 @@ var Pagination = function (_React$Component) {
 
     _this.incrementPage = _this.incrementPage.bind(_this);
     _this.decrementPage = _this.decrementPage.bind(_this);
-
     return _this;
   }
 
@@ -44906,8 +44907,8 @@ var Pagination = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    page: state.pagination,
-    maxPage: 2
+    page: state.pagination.currentPage,
+    maxPage: state.pagination.maxPage
   };
 };
 
@@ -56000,8 +56001,15 @@ function reducer() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 exports.default = reducer;
-var initialState = 0;
+var initialState = {
+  currentPage: 0,
+  listingsPerPage: 4,
+  maxPage: 2
+};
 
 function reducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -56010,11 +56018,15 @@ function reducer() {
   switch (action.type) {
     case 'INCREMENT_PAGE':
       {
-        return ++state;
+        return _extends({}, state, {
+          currentPage: ++state.currentPage
+        });
       }
     case 'DECREMENT_PAGE':
       {
-        return --state;
+        return _extends({}, state, {
+          currentPage: --state.currentPage
+        });
       }
     default:
       {

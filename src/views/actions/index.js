@@ -24,7 +24,7 @@ export function fetchMock() {
 
 export function incrementPage() {
   return {
-    type:'INCREMENT_PAGE',
+    type:'INCREMENT_PAGE'
   }
 }
 
