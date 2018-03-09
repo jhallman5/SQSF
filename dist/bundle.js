@@ -11633,6 +11633,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.fetchData = fetchData;
 exports.fetchMock = fetchMock;
+exports.incrementPage = incrementPage;
+exports.decrementPage = decrementPage;
 function fetchData() {
   return {
     type: 'FETCH_DATA',
@@ -11660,6 +11662,18 @@ function fetchMock() {
         return console.log('Error in Action', error);
       });
     })
+  };
+}
+
+function incrementPage() {
+  return {
+    type: 'INCREMENT_PAGE'
+  };
+}
+
+function decrementPage() {
+  return {
+    type: 'DECREMENT_PAGE'
   };
 }
 
@@ -44711,7 +44725,7 @@ var Listings = function (_React$Component) {
         this.props.listings.slice(4 * this.props.page, 4 * this.props.page + 4).map(function (listing, i) {
           return _react2.default.createElement(_Listing2.default, { width: _this2.props.width, key: i, info: listing });
         }),
-        _react2.default.createElement(_Pagination2.default, { page: this.props.page })
+        _react2.default.createElement(_Pagination2.default, null)
       );
     }
   }]);
@@ -44872,7 +44886,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = __webpack_require__(91);
+
 var _reactBootstrap = __webpack_require__(32);
+
+var _actions = __webpack_require__(193);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44906,7 +44924,7 @@ var Pagination = function (_React$Component) {
         this.props.page + 1,
         _react2.default.createElement(
           _reactBootstrap.Pager.Item,
-          { next: true, href: '#' },
+          { next: true, onClick: this.props.incrementPage },
           'Next'
         )
       );
@@ -44916,7 +44934,24 @@ var Pagination = function (_React$Component) {
   return Pagination;
 }(_react2.default.Component);
 
-exports.default = Pagination;
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    page: state.pagination
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    incrementPage: function incrementPage() {
+      return dispatch((0, _actions.incrementPage)());
+    },
+    decrementPage: function decrementPage() {
+      return dispatch((0, _actions.decrementPage)());
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Pagination);
 
 /***/ }),
 /* 417 */
@@ -55935,61 +55970,23 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(93);
 
-var _sampleReducer = __webpack_require__(579);
-
-var _sampleReducer2 = _interopRequireDefault(_sampleReducer);
-
 var _listings = __webpack_require__(580);
 
 var _listings2 = _interopRequireDefault(_listings);
 
+var _pagination = __webpack_require__(581);
+
+var _pagination2 = _interopRequireDefault(_pagination);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
-  sample: _sampleReducer2.default,
-  listings: _listings2.default
+  listings: _listings2.default,
+  pagination: _pagination2.default
 });
 
 /***/ }),
-/* 579 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = reducer;
-var initialState = {
-  data: false
-};
-
-function reducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  var action = arguments[1];
-
-  switch (action.type) {
-    // case 'FETCH_DATA_FULFILLED': {
-    //   return {
-    //     ...state,
-    //     data: action.payload
-    //   }
-    // }
-    // case 'FETCH_MOCK_FULFILLED': {
-    //   return {
-    //     ...state,
-    //     data: action.payload
-    //   }
-    // }
-    default:
-      {
-        return state;
-      }
-  }
-}
-
-/***/ }),
+/* 579 */,
 /* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -56014,6 +56011,39 @@ function reducer() {
     case 'FETCH_MOCK_FULFILLED':
       {
         return action.payload;
+      }
+    default:
+      {
+        return state;
+      }
+  }
+}
+
+/***/ }),
+/* 581 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = reducer;
+var initialState = 0;
+
+function reducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'INCREMENT_PAGE':
+      {
+        return ++state;
+      }
+    case 'DECREMENT_PAGE':
+      {
+        return --state;
       }
     default:
       {

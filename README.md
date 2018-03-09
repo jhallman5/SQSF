@@ -23,4 +23,11 @@ npm run dev
 - convert components/Listing to a presentational component
 - set up dev environment
 - redux clean up required
-- set up redux for better handling of api/mock data 
+- set up redux for better handling of api/mock data
+
+
+## Issues
+- During pagination development.
+```
+Added non-passive event listener to a scroll-blocking 'touchstart' event.
+ ```

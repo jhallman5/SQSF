@@ -29,7 +29,7 @@ class Listings extends React.Component {
           this.props.listings.slice(4 * this.props.page, (4 * this.props.page) + 4)
             .map((listing, i) => <Listing width={this.props.width} key={i} info={listing} /> )
         }
-        <Pagination page={this.props.page}/>
+        <Pagination />
       </div>
     )
   }

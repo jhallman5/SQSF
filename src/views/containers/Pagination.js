@@ -1,15 +1,32 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Pager} from 'react-bootstrap'
 
-export default class Pagination extends React.Component {
+import { incrementPage, decrementPage } from '../actions'
 
+class Pagination extends React.Component {
   render(){
     return (
       <Pager>
         <Pager.Item previous href='#'>Previous</Pager.Item>
         Page {this.props.page + 1}
-        <Pager.Item next href='#'>Next</Pager.Item>
+        <Pager.Item next onClick={this.props.incrementPage}>Next</Pager.Item>
       </Pager>
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    page: state.pagination
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    incrementPage: () => dispatch(incrementPage()),
+    decrementPage: () =>  dispatch(decrementPage())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pagination)
