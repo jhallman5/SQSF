@@ -1,6 +1,6 @@
 const generateMockListings10 = () => {
   const mockListings = []
-  for(let i = 0; i < 10; i++){
+  for(let i = 0; i < 12; i++){
     mockListings.push(
       {
         message: { code: 0 },

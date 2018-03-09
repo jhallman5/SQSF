@@ -9,7 +9,6 @@ class Pagination extends React.Component {
     super(props)
     this.incrementPage = this.incrementPage.bind(this)
     this.decrementPage = this.decrementPage.bind(this)
-
   }
 
   incrementPage(){
@@ -33,8 +32,8 @@ class Pagination extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    page: state.pagination,
-    maxPage: 2
+    page: state.pagination.currentPage,
+    maxPage: state.pagination.maxPage
   }
 }
 

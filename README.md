@@ -19,15 +19,13 @@ npm run dev
 
 ## TODOS
 - Nav spacing / dynamic resizing
-- Update naming convention for redux example
 - convert components/Listing to a presentational component
 - set up dev environment
-- redux clean up required
 - set up redux for better handling of api/mock data
-
+- pagination redux is zero based, Haven't decided if that is a good idea
 
 ## Issues
-- During pagination development.
+- Google maps API error. [Tracked](issuetracker.google.com/issues/63211698)
 ```
 Added non-passive event listener to a scroll-blocking 'touchstart' event.
  ```

@@ -18,7 +18,7 @@ class Listings extends React.Component {
     console.log(this.props)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchMock()
   }
 
@@ -26,7 +26,7 @@ class Listings extends React.Component {
     return (
       <div>
         {
-          this.props.listings.slice(4 * this.props.page, (4 * this.props.page) + 4)
+          this.props.listings.slice(this.props.listingsPerPage * this.props.page, (this.props.listingsPerPage * this.props.page) + this.props.listingsPerPage)
             .map((listing, i) => <Listing width={this.props.width} key={i} info={listing} /> )
         }
         <Pagination />
@@ -38,7 +38,9 @@ class Listings extends React.Component {
 const mapStateToProps = state => {
   return {
     listings: state.listings,
-    page: state.pagination
+    page: state.pagination.currentPage,
+    listingsPerPage: state.pagination.listingsPerPage,
+    maxPage: state.pagination.maxPage
   }
 }
 
