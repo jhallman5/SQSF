@@ -44814,6 +44814,19 @@ var Listing = function (_React$Component) {
                 ),
                 ' Baths'
               )
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.Row,
+              null,
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { mdOffset: 6 },
+                _react2.default.createElement(
+                  'a',
+                  { href: 'http://www.zillow.com/' },
+                  _react2.default.createElement('img', { src: 'http://www.zillow.com/widgets/GetVersionedResource.htm?path=/static/logos/Zillowlogo_200x50.gif', width: '200', height: '50', alt: 'Zillow Real Estate Search' })
+                )
+              )
             )
           )
         )

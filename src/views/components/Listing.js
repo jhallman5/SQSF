@@ -28,7 +28,13 @@ export default class Listing extends React.Component {
                 <Col md={6}>
                   <Badge>{this.props.info.response.results[0].bathrooms}</Badge> Baths
                 </Col>
-
+            </Row>
+            <Row>
+              <Col mdOffset={6}>
+                <a href='http://www.zillow.com/'>
+                  <img src="http://www.zillow.com/widgets/GetVersionedResource.htm?path=/static/logos/Zillowlogo_200x50.gif" width="200" height="50" alt="Zillow Real Estate Search" />
+                </a>
+              </Col>
             </Row>
            </Grid>
         </Media.Body>
