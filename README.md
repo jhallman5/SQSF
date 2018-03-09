@@ -20,3 +20,7 @@ npm run dev
 ## TODOS
 - Nav spacing / dynamic resizing
 - Update naming convention for redux example
+- convert components/Listing to a presentational component
+- set up dev environment
+- redux clean up required
+- set up redux for better handling of api/mock data 

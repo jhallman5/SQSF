@@ -23,15 +23,12 @@ class Listings extends React.Component {
   }
 
   render(){
-    let listings = []
-    for(let i = 0; i < 10; i++) {
-      listings.push(<Listing width={this.props.width} key={i} number={i}/>)
-    }
-    console.log('Props: ', this.props)
-
     return (
       <div>
-        {listings.slice(4 * this.props.page, (4 * this.props.page) + 4)}
+        {
+          this.props.listings.slice(4 * this.props.page, (4 * this.props.page) + 4)
+            .map((listing, i) => <Listing width={this.props.width} key={i} info={listing} /> )
+        }
         <Pagination page={this.props.page}/>
       </div>
     )

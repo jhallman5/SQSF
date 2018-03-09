@@ -7,7 +7,7 @@ const generateMockListings10 = () => {
         response: {
           results: [
             {
-              address: [`Address ${i}`],
+              address: [`${i}`],
               bathrooms: ['3.0'],
               bedrooms: ['4'],
               finishedSqFt: ['3470']
