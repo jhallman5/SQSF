@@ -44778,7 +44778,8 @@ var Listing = function (_React$Component) {
                   _reactBootstrap.Badge,
                   null,
                   '$400,000'
-                )
+                ),
+                ' Zestimate'
               ),
               _react2.default.createElement(
                 _reactBootstrap.Col,
@@ -44820,7 +44821,16 @@ var Listing = function (_React$Component) {
               null,
               _react2.default.createElement(
                 _reactBootstrap.Col,
-                { mdOffset: 6 },
+                { md: 6, style: styles.zillowDetails },
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'See more details for dsfadsf dsafdsa fsadfdsfdafadsfa sfsfa on Zillow'
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                null,
                 _react2.default.createElement(
                   'a',
                   { href: 'http://www.zillow.com/' },
@@ -44838,6 +44848,14 @@ var Listing = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Listing;
+
+
+var styles = {
+  zillowDetails: {
+    whiteSpace: "normal",
+    wordWrap: "break-word"
+  }
+};
 
 /***/ }),
 /* 416 */
@@ -55955,11 +55973,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(93);
 
-var _listings = __webpack_require__(580);
+var _listings = __webpack_require__(579);
 
 var _listings2 = _interopRequireDefault(_listings);
 
-var _pagination = __webpack_require__(581);
+var _pagination = __webpack_require__(580);
 
 var _pagination2 = _interopRequireDefault(_pagination);
 
@@ -55971,8 +55989,7 @@ exports.default = (0, _redux.combineReducers)({
 });
 
 /***/ }),
-/* 579 */,
-/* 580 */
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56005,7 +56022,7 @@ function reducer() {
 }
 
 /***/ }),
-/* 581 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
